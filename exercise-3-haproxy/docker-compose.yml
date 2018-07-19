@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  web1:
+    build: .
+  web2:
+    build: .
+  redis:
+    image: "redis:alpine"
+  haproxy:
+    image: haproxy:1.8
+    ports:
+      - "8080:80"
+    volumes: 
+      - "./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
